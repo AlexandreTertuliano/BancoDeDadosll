@@ -16,7 +16,7 @@ public class DeleteJogador {
         TimeModal tiModal = new TimeModal();
         
        
-        joDAO.deleteJogador(2);
+        joDAO.deleteJogador(9);
         
     }
 }

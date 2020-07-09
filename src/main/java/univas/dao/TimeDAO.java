@@ -28,7 +28,7 @@ public class TimeDAO {
 	public void getAllTimes() {
 		
 		EntityManager em = HibernateUtil.getEntityManager();
-		String ql = "SELECT t FROM Time t";
+		String ql = "SELECT t FROM TimeModal t";
 		TypedQuery<TimeModal> query = em.createQuery(ql, TimeModal.class);
 		List<TimeModal> time = query.getResultList();
 		System.out.println("Times: " + time);

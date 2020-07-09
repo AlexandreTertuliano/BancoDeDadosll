@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import univas.entidades.JogadorModal;
+import univas.entidades.TimeModal;
 import univas.utils.HibernateUtil;
 
 public class JogadorDAO {
@@ -27,11 +28,23 @@ public class JogadorDAO {
 	public void selectAllJogadores() {
 		
 		EntityManager em = HibernateUtil.getEntityManager();
-		String sql = "SELECT j FROM Jogadores j";
+		String sql = "SELECT j FROM JogadorModal j";
 		TypedQuery<JogadorModal> query = em.createQuery(sql, JogadorModal.class);
 		List<JogadorModal> jogadores = query.getResultList();
 		System.out.println("Jogadores: " + jogadores);
 
+	}
+	
+	public void getJogadorById(Integer id) {
+		EntityManager em = HibernateUtil.getEntityManager();
+		String ql = "select t from jogador t where t.id_jogador = :id";
+
+		TypedQuery<JogadorModal> query = em.createQuery(ql, JogadorModal.class);
+		query.setParameter("id", id);
+
+		JogadorModal jogador = query.getSingleResult();
+
+		System.out.println("Jogador por id: " + jogador);
 	}
 
 

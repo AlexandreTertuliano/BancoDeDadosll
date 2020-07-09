@@ -14,7 +14,7 @@ public class DeleteTime {
         TimeDAO tiDAO = new TimeDAO();
 
 
-        tiDAO.excluirTime(3);
+        tiDAO.excluirTime(8);
     }
 
 }
