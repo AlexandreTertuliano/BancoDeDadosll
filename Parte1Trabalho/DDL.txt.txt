@@ -1,0 +1,29 @@
+CREATE TABLE public.time (
+                id_time INTEGER NOT NULL,
+                nome_time VARCHAR NOT NULL,
+                city VARCHAR NOT NULL,
+                titulos VARCHAR NOT NULL,
+                CONSTRAINT time_pk PRIMARY KEY (id_time)
+);
+
+
+CREATE SEQUENCE public.jogadores_id_jogador_seq;
+
+CREATE TABLE public.Jogadores (
+                id_jogador INTEGER NOT NULL DEFAULT nextval('public.jogadores_id_jogador_seq'),
+                id_time INTEGER NOT NULL,
+                nome_jogador VARCHAR NOT NULL,
+                posicao VARCHAR NOT NULL,
+                dt_nascimento DATE NOT NULL,
+                CONSTRAINT jogadores_pk PRIMARY KEY (id_jogador, id_time)
+);
+
+
+ALTER SEQUENCE public.jogadores_id_jogador_seq OWNED BY public.Jogadores.id_jogador;
+
+ALTER TABLE public.Jogadores ADD CONSTRAINT time_jogadores_fk
+FOREIGN KEY (id_time)
+REFERENCES public.time (id_time)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
